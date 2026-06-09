@@ -18,6 +18,10 @@ public class Song {
 
     @Override
     public String toString() {
-        return "Song{title='" + title + "', duration=" + durationSeconds + "s}";
+        return "Song{" +
+                "title='" + title + '\'' +
+                ", durationSeconds=" + durationSeconds +
+                ", reproductions=" + reproductions +
+                '}';
     }
 }
