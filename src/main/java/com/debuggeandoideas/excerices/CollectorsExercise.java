@@ -1,14 +1,16 @@
 package com.debuggeandoideas.excerices;
 
+import com.debuggeandoideas.data.DBMusic;
 import com.debuggeandoideas.dtos.Artist;
-import com.debuggeandoideas.dtos.Song;
 
 import java.util.List;
 import java.util.LongSummaryStatistics;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
 
 public class CollectorsExercise {
+
+    private static List<Artist> artists = DBMusic.ARTISTS;
 
     /**
      * groupingBy
@@ -40,9 +42,9 @@ public class CollectorsExercise {
      * Por género, retorna la lista de títulos de todos sus álbumes sin duplicados.
      * Requiere flatMap + distinct dentro del mapping.
      *
-     * @return Map<String, List<String>> género → títulos de álbumes sin duplicados
+     * @return Map<String, Set<String>> género → títulos de álbumes sin duplicados
      */
-    public Map<String, List<String>> getAlbumTitlesByGenre() {
+    public Map<String, Set<String>> getAlbumTitlesByGenre() {
         throw new UnsupportedOperationException("Implementar groupingBy + mapping");
     }
 
@@ -57,30 +59,6 @@ public class CollectorsExercise {
      */
     public Map<String, LongSummaryStatistics> getReproductionStatsByGenre() {
         throw new UnsupportedOperationException("Implementar groupingBy + summarizingLong");
-    }
-
-    /**
-     * groupingBy + maxBy
-     * <p>
-     * Por género, encuentra la canción más reproducida.
-     * Requiere flatMap + flatMap antes de agrupar.
-     *
-     * @return Map<String, Optional<Song>> género → canción más reproducida
-     */
-    public Map<String, Optional<Song>> getMostReproducedSongByGenre() {
-        throw new UnsupportedOperationException("Implementar groupingBy + maxBy");
-    }
-
-    /**
-     * groupingBy + minBy
-     * <p>
-     * Por país del artista, encuentra la canción más corta.
-     * Requiere flatMap + flatMap antes de agrupar.
-     *
-     * @return Map<String, Optional<Song>> país → canción más corta
-     */
-    public Map<String, Optional<Song>> getShortestSongByCountry() {
-        throw new UnsupportedOperationException("Implementar groupingBy + minBy");
     }
 
     /**
@@ -124,25 +102,14 @@ public class CollectorsExercise {
     /**
      * collectingAndThen
      * <p>
-     * Agrupa artistas por país, cuenta cuántos hay en cada grupo
-     * y devuelve el mapa inmutable.
+     * Cuenta el total de artistas del catálogo
+     * y devuelve el resultado como un mensaje formateado.
+     * Ejemplo de salida esperada:
+     *   "Total de artistas en el catálogo: 39"
      *
-     * @return Map<String, Long> inmutable — país → cantidad de artistas
+     * @return String con el total de artistas formateado
      */
-    public Map<String, Long> getImmutableArtistCountByCountry() {
+    public String getTotalArtistsMessage() {
         throw new UnsupportedOperationException("Implementar collectingAndThen");
-    }
-
-    /**
-     * mapping
-     * <p>
-     * Por género, retorna la lista de títulos de todas sus canciones
-     * sin duplicados.
-     * Requiere flatMap + flatMap + distinct dentro del mapping.
-     *
-     * @return Map<String, List<String>> género → títulos de canciones sin duplicados
-     */
-    public Map<String, List<String>> getSongTitlesByGenre() {
-        throw new UnsupportedOperationException("Implementar mapping");
     }
 }
